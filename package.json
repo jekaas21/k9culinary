@@ -1,0 +1,13 @@
+{
+  "name": "school-proxy",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "@mercuryworkshop/wisp-js": "^0.4.1"
+  }
+}
