@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Study Tool</title>
+  <script src="https://unpkg.com/@mercuryworkshop/wisp-js@0.4.1/client.js"></script>
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+    .input-group {
+      display: flex;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    input {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    button {
+      padding: 12px 24px;
+      background: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #3367d6;
+    }
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📚 Study Tool</h1>
+    <div class="input-group">
+      <input type="url" id="url" placeholder="Enter website URL...">
+      <button onclick="loadSite()">Go</button>
+    </div>
+    <iframe id="proxyFrame"></iframe>
+  </div>
+
+  <script>
+    function loadSite() {
+      const url = document.getElementById('url').value.trim();
+      if (!url) return;
+
+      const proxyUrl = `https://uv.astrolabe.run/service/?url=${encodeURIComponent(url)}`;
+      document.getElementById('proxyFrame').src = proxyUrl;
+    }
+
+    document.getElementById('url').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') loadSite();
+    });
+  </script>
+</body>
+</html>
